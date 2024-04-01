@@ -1,0 +1,15 @@
+---
+- name: Deploy HashiCorp Vault on Azure
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    resource_group: sebbypoo
+    location: eastus
+
+  tasks:
+    - name: Create a resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
+    
