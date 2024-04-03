@@ -1,0 +1,15 @@
+---
+- name: Get information about an Azure Resource Group
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Get Resource Group facts
+      azure_rm_resourcegroup_info: # or azure_rm_resourcegroup_facts for older versions
+        name: your_resource_group_name
+        # Optional: specify the Azure subscription ID if it's not the default
+        # subscription_id: your_subscription_id
+      register: rg_facts
+
+    - name: Display the resource group information
+      debug:
+        var: rg_facts
